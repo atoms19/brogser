@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>aw-home</title>
+  
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <div class="main">
+ <section id="home" class="">
+    <div id="browser-home" class="container">
+      
+      <nav class="nav">
+        <div class="weather">
+          <img>
+          <p id=temp>5⁰c</p><p id=forcast>cloudy</p>
+        </div>
+        <div id="config-menu-btn">
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
+</svg>
+        </div>
+      </nav>
+      
+<h1 class="title">Brogser</h1>
+<form target="" action="https://bing.com/search">
+<input name="q" autocomplete="off" class="searchbar" placeholder="search anything..." onEnter="search(this)">
+</form>
+<article class="shortcuts">
+<div class="shortcuts-scroll" id="shortcut-list">
+  
+
+          <template id="shortcut-template" class="">
+            <a href="#" class="shortcut-container">
+            <icon>
+              <img  class="icon-img"src="">
+            </icon>
+            <label></label>
+            </a>
+          </template>
+    
+ 
+          <div id="shortcut-add-btn" class="shortcut-container">
+            <icon class="icon-img"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+</svg></icon>
+            <label>add</label>
+          </div>
+</div>
+
+</article>
+
+</div>
+</section>
+
+<section id="popup" class="hide">
+<div id="bookmark-popup" class="container-center">
+  <div class="card">
+    <h2 class="card-title">
+     new short cut
+    </h2>
+    <input id="name-in" placeholder="name" type="text" class="searchbar">
+    <input id="url-in"placeholder="enter site url" type=url class="searchbar">
+    <div class="btn-grid">
+    <button id="popup-exit-btn"class="btn-sec">exit</button>
+    <button id="shortcut-create" class="btn-prim">create</button>
+    </div>
+  </div>
+  
+</div>
+</section>
+
+
+</div>
+
+ 
+  <script src="main.js"></script>
+</body>
+</html>
