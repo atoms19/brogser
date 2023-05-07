@@ -1,16 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@450&display=swap');
 body{
   margin:0;
   padding:0;
   font-family:sans-serif;
   user-select:none;
+  font-family:'Open Sans',sans-serif;
+  color:#fff;
+  scroll-behavior:smooth;
+  box-sizing:border-box;
+  font-weight:450;
 }
+h1,h2,h3,h4,h5,a{
+  font-family:'Open Sans',sans-serif;
 
+}
 .main {
     font-size:0.8rem;
     background:url('https://images.unsplash.com/photo-1681823853101-9a0d7e8be47b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80') ;
     background-size:cover;
     height:100vh;
-    background-repeat:repeat;
+    background-repeat:no-repeat;
     transition: all 0.2s ease-out;
 }
 .container{
@@ -116,7 +125,7 @@ label{
   color:#ccc;
   }
 .hide{
-  display:none;
+  display: none !important;
 }
 
 /*popup screen*/
@@ -190,6 +199,7 @@ label{
   width:90%;
   display:flex;
   justify-content:space-between;
+  padding:0.4rem;
 }
 .weather{
   display:flex;
@@ -199,9 +209,42 @@ label{
 .weather p{
   padding:0.25rem;
 }
-#config-menu-btn{
+#config-menu-btn,.icon{
   display: flex;
   justify-content: center;
   align-items: center;
   color:white;
 }
+#config-menu{
+  color:white;
+  backdrop-filter:blur(12px);
+  background:rgba(0,0,0,0.25);
+  height:100%;
+  animation: slidedown 0.5s;
+}
+.config-top-nav{
+ 
+  display:flex;
+  justify-content:space-between;
+  padding:1rem;
+  margin-bottom:1.5rem;
+  box-shadow:0 0 5px rgba(0,0,0,0.7325);
+}
+.config-title{
+  font-size: 1rem;
+}
+.options{
+  padding:1rem;
+  
+}
+.option{
+  
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  padding:1.5rem ;
+  border-bottom:0.5px solid #ccc;
+}
+.inp{
+  width:10rem;
+  }
