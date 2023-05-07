@@ -57,7 +57,7 @@ window.onload=()=>{
 shortcuts=[]
 
 function updateWeather(){
-  apiLink=`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${weatherApiKey}`
+  apiLink=`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${weatherApiKey}`
   
   fetch(apiLink).then((response)=>{
    return response.json()
