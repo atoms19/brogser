@@ -9,6 +9,7 @@ body{
   scroll-behavior:smooth;
   box-sizing:border-box;
   font-weight:450;
+  -webkit-tap-highlight-color:rgba(0,0,0,0.25);
 }
 h1,h2,h3,h4,h5,a{
   font-family:'Open Sans',sans-serif;
@@ -51,9 +52,49 @@ h1.title{
   text-align: center;
   
 }
+
+.input{
+  background:rgb(0,0,0,0.38);
+  border:none;
+  outline:none;
+  backdrop-filter:blur(20px);
+  padding: 0.68rem;
+  width:80%;
+  max-width:600px;
+  color:white;
+  border-radius:0.5rem;
+  margin:1.5rem;
+  text-align: center;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.icon{
+display:flex;
+align-items:center;
+}
+.input input{
+  background: transparent ;
+  border:none;
+  outline:none;
+  color:white;
+  text-align:center;
+  font-size:1rem;
+  color:white;
+}
+.icon.noshow{
+  pointer-events:none;
+  opacity:0;
+}
+
+
+
+
 form{
   width:100%;
   text-align:center;
+  display:flex;
+  justify-content: center;
 }
 .searchbar::placeholder{
   color:#ccc;
@@ -201,10 +242,13 @@ label{
   justify-content:space-between;
   padding:0.4rem;
 }
+a{
+   text-decoration:none !important;
+}
 .weather{
   display:flex;
   justify-content:space-around;
-  color:rgba(255,255,255,0.8);
+  color:rgba(255,255,255);
 }
 .weather p{
   padding:0.25rem;
@@ -247,4 +291,4 @@ label{
 }
 .inp{
   width:10rem;
-  }
+}
