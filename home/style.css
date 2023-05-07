@@ -96,7 +96,7 @@ form{
   display:flex;
   justify-content: center;
 }
-.searchbar::placeholder{
+input[type=text]::placeholder{
   color:#ccc;
 }
 .shortcuts{
