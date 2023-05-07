@@ -146,3 +146,18 @@ weatherin.addEventListener('change',()=>{
 updateWeather()
   
 })
+searchbar=document.querySelector('#search-inp')
+showh=()=>{
+  if(searchbar.value==''){
+    document.querySelector('#clearbtn').classList.add('noshow')
+  }else{
+    document.querySelector('#clearbtn').classList.remove('noshow')
+  }
+}
+searchbar.oninput=()=>{if(searchbar.value!=''){showh()}}
+
+function clearinp(){
+  
+searchbar.value=''
+showh()
+} 
