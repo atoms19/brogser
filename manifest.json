@@ -1,0 +1,33 @@
+ 
+
+         "name": "brogser ->customized new tab", 
+
+         "short_name": "bgsr", 
+
+         "version": "1", 
+
+         "minimum_chrome_version": "104", 
+
+         "manifest_version": 1, 
+
+         "description": "a redesigned new tab featuring customizable shortcuts,search engine switcher, weather widget and a glassy background", 
+
+        
+
+         "permissions": [ 
+
+               "management",
+
+               "tabs"
+
+                 
+
+          ], 
+
+         "chrome_url_overrides": { 
+
+                 "newtab": "index.html" 
+
+         }
+
+ }
