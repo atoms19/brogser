@@ -17,6 +17,10 @@ configMenuBtnClose=id('menu-close-btn')
 configMenu=id('config-menu')
 bgin=id('bg-input')
 weatherin=id('weather-input')
+searchForm=id('search-form')
+searchEngineInput=id('search-engine-in')
+weatherLink=id('weather-link')
+
 
 id('shortcut-add-btn').addEventListener('click',()=>{
   homeSection.classList.add('hide')
@@ -53,6 +57,13 @@ window.onload=()=>{
   
   mainSection.style.background=`url('${url}')`
   bgalign()
+  searchPreferences=JSON.parse(localStorage.getItem('searchEngine'))
+  searchLink=searchPreferences[0] || 'https://www.google.com/search'
+  searchForm.setAttribute('action',searchLink)
+  searchEngineInput.value=searchPreferences[1]
+  
+  
+  
 }
 shortcuts=[]
 
@@ -75,6 +86,11 @@ function bgalign(){
  
 }
 
+weatherLink.onclick=()=>{
+  id('search-inp').value='weather'
+  searchForm.submit()
+  id('search-inp').value=''
+}
 
 
 
@@ -161,3 +177,19 @@ function clearinp(){
 searchbar.value=''
 showh()
 } 
+
+//search engine changer
+searchEngineInput.addEventListener('change',(e)=>{
+  console.log(e.target.value)
+  if(e.target.value=='google'){
+    searchLink='https://google.com/search'
+  }else if(e.target.value=='brave'){
+    searchLink='https://search.brave.com/search'
+  }else if(e.target.value=='bing'){
+    searchLink='https://www.bing.com/search'
+  }else if(e.target.value=='duckduckgo'){
+    searchLink='https://duckduckgo.com/'
+  }
+  searchForm.setAttribute('action',searchLink)
+  localStorage.setItem('searchEngine',JSON.stringify([searchLink,e.target.value]))
+})
