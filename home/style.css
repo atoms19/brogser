@@ -2,6 +2,7 @@
 body{
   margin:0;
   padding:0;
+  background:#222;
   font-family:sans-serif;
   user-select:none;
   font-family:'Open Sans',sans-serif;
@@ -35,7 +36,7 @@ h1.title{
   font-family:sans-serif;
   padding:1rem 0;
   font-weight:400;
-  text-shadow:0 0 3px rgb(0,0,0,0.12);
+  text-shadow:0 0 3px rgb(0,0,0,0.2);
 }
 .searchbar{
   background:rgb(0,0,0,0.38);
@@ -104,6 +105,7 @@ input[type=text]::placeholder{
   border-radius:0.5rem;
   padding:0.5rem 1.5rem;
   width:70%;
+  backdrop-filter:blur(1px);
   overflow-x:hidden;
   max-width:580px;
   display:flex;
@@ -124,14 +126,14 @@ input[type=text]::placeholder{
   flex-direction:column;
   justify-content:space-evenly;
   background:rgb(0,0,0,0.26);
- /* backdrop-filter:blur(30px);*/
+ /* backdrop-filter:blur(2px);*/
   border-radius:0.5rem;
   padding:0.4rem 1rem;
   color:white;
   height:4.25rem;
   align-items:center;
   font-size:1rem;
-  margin:0 0.21rem;
+  margin:0.1rem 0.21rem;
   text-decoration:none !important;
 -webkit-tap-highlight-color:rgba(0,0,0,0.5);
 transition: transform 0.2s cubic-bezier(0.77, 0, 0.175, 1);
@@ -249,6 +251,7 @@ a{
   display:flex;
   justify-content:space-around;
   color:rgba(255,255,255);
+  cursor:pointer;
 }
 .weather p{
   padding:0.25rem;
@@ -257,7 +260,7 @@ a{
   display: flex;
   justify-content: center;
   align-items: center;
-  color:white;
+  color:rgba(255,255,255);
 }
 #config-menu{
   color:white;
@@ -291,4 +294,17 @@ a{
 }
 .inp{
   width:10rem;
+}
+#bg-input{
+  display:none;
+}
+.choice-btn{
+  font-size:1rem;
+  width:10rem;
+  padding:0.5rem 0.5rem;
+  background:rgba(0,0,0,0.38);
+  color:#ccc;
+  text-align:center;
+  border-radius:0.5rem;
+  backdrop-filter: blur(10px);
 }
