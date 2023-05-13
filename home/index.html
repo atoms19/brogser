@@ -15,7 +15,7 @@
     <div id="browser-home" class="container">
       
       <nav class="nav">
-        <a href="https://www.google.com/search?q=weather">
+        <a id=weather-link>
         <div class="weather">
           <img>
           <p id=temp>5⁰c</p><p id=forcast>cloudy</p>
@@ -31,14 +31,14 @@
       </nav>
       
 <h1 class="title">Brogser</h1>
-<form target="" action="https://google.com/search">
+<form id="search-form" target="" action="https://google.com/search">
  
   <label for=ins class="input">
    <div class="icon">
      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
 </svg></div>
-<input type="text" placeholder="type to search..."id="search-inp" name="q" autocomplete="off" placeholder="search anything..." onEnter="search(this)">
+<input type="text" placeholder="type to search..."id="search-inp" name="q" autocomplete="off" placeholder="search anything..." class="searchinp" onEnter="search(this)">
 
 <div class="icon noshow" id="clearbtn"onclick="clearinp()">
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
@@ -105,7 +105,8 @@
     <div>
       <h2>background </h2>
       <a>change background image of browser</a></div>
-      <input type="file" id="bg-input" accept="image/*">
+        <label class="choice-btn"for="bg-input">change   <input type="file" id="bg-input" accept="image/*">
+  </label>
     </div>
     <div class="option">
     <div>
@@ -113,7 +114,19 @@
       <a>change weather location</a></div>
       <input type="text" id="weather-input" class="searchbar inp" placeholder="enter a city">
     </div>
+    <div class="option">
+      <div>
+        <h2>search engine</h2>
+        <a>change search provider</a>
+      </div>
+      <select class="searchbar inp" id="search-engine-in">
+        <option>google</option>
+        <option>brave</option>
+        <option>bing</option>
+        <option>duckduckgo</option>
+      </select>
     </div>
+    
 </article>
 </section>
 
