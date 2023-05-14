@@ -42,7 +42,10 @@ id('shortcut-create').addEventListener('click',()=>{
 
 
 
-window.onload=()=>{
+window.onload=updateInfo
+
+
+function updateInfo(){
  shortcutSaves= JSON.parse(localStorage.getItem('shortcuts')) || []
   shortcutSaves.forEach((shortcut)=>{
     shortcutCreate(shortcut.label,shortcut.image)
@@ -189,7 +192,14 @@ searchEngineInput.addEventListener('change',(e)=>{
     searchLink='https://www.bing.com/search'
   }else if(e.target.value=='duckduckgo'){
     searchLink='https://duckduckgo.com/'
+  }else if(e.target.value=='ecosia'){
+    searchLink='https://www.ecosia.org/search'
   }
   searchForm.setAttribute('action',searchLink)
   localStorage.setItem('searchEngine',JSON.stringify([searchLink,e.target.value]))
 })
+
+function clearLocal(){
+  localStorage.clear()
+  updateInfo()
+}
