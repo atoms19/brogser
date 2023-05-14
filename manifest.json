@@ -8,7 +8,6 @@
                 "description": "a redesigned new tab featuring customizable shortcuts,search engine switcher, weather widget and a glassy background"
                 ,
                 "author": "atoms19",
-                "homepage_url": "",
                 "minimum_chrome_version": "104",
                 "offline_enabled": true,
                 "permissions": [
