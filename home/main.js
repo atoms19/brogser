@@ -60,7 +60,7 @@ function updateInfo(){
   
   mainSection.style.background=`url('${url}')`
   bgalign()
-  searchPreferences=JSON.parse(localStorage.getItem('searchEngine'))
+  searchPreferences=JSON.parse(localStorage.getItem('searchEngine'))||[null]
   searchLink=searchPreferences[0] || 'https://www.google.com/search'
   searchForm.setAttribute('action',searchLink)
   searchEngineInput.value=searchPreferences[1]
@@ -203,3 +203,7 @@ function clearLocal(){
   localStorage.clear()
   updateInfo()
 }
+
+id('restore-btn').addEventListener('click',()=>{
+  clearLocal()
+})
