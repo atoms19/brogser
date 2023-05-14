@@ -21,7 +21,7 @@ h1,h2,h3,h4,h5,a{
     background:url('https://images.unsplash.com/photo-1681823853101-9a0d7e8be47b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80') ;
     background-size:cover;
     height:100vh;
-    background-repeat:no-repeat;
+   background-repeat:no-repeat;
     transition: all 0.2s ease-out;
 }
 .container{
@@ -191,7 +191,7 @@ label{
   border-radius: 0.5rem;
   width:80%;
   text-align:center;
-  max-width:600px;
+  max-width:500px;
 }
 .btn-grid{
   display:flex;
@@ -282,6 +282,8 @@ a{
 }
 .options{
   padding:1rem;
+  height:70vh;
+  overflow-y:scroll;
   
 }
 .option{
@@ -307,4 +309,10 @@ a{
   text-align:center;
   border-radius:0.5rem;
   backdrop-filter: blur(10px);
+  border:none;
+  cursor:pointer;
+  transition:transform 0.2s;
+}
+.choice-btn:active{
+  transform:scale(0.9);
 }
