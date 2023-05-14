@@ -16,7 +16,7 @@
                 ],
                 "chrome_url_overrides": { 
 
-                 "newtab": "index.html" 
+                 "newtab": "home/index.html" 
 
          }
 
