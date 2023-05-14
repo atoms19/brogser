@@ -1,33 +1,24 @@
- 
-
-         "name": "brogser ->customized new tab", 
-
-         "short_name": "bgsr", 
-
-         "version": "1", 
-
-         "minimum_chrome_version": "104", 
-
-         "manifest_version": 1, 
-
-         "description": "a redesigned new tab featuring customizable shortcuts,search engine switcher, weather widget and a glassy background", 
-
         
-
-         "permissions": [ 
-
-               "management",
-
-               "tabs"
-
-                 
-
-          ], 
-
-         "chrome_url_overrides": { 
+         {
+                "name": "JSON brogser new tab",
+                "short_name": "brogser",
+                "version": "1",
+                "version_name": "Version 1",
+                "manifest_version": 3,
+                "description": "a redesigned new tab featuring customizable shortcuts,search engine switcher, weather widget and a glassy background"
+                ,
+                "author": "atoms19",
+                "homepage_url": "",
+                "minimum_chrome_version": "104",
+                "offline_enabled": true,
+                "permissions": [
+                  "storage",
+                  "unlimitedStorage"
+                ],
+                "chrome_url_overrides": { 
 
                  "newtab": "index.html" 
 
          }
 
- 
+              }
