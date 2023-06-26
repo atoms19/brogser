@@ -20,7 +20,8 @@ weatherin=id('weather-input')
 searchForm=id('search-form')
 searchEngineInput=id('search-engine-in')
 weatherLink=id('weather-link')
-
+title=id('title')
+titleIn=id('title-in')
 
 id('shortcut-add-btn').addEventListener('click',()=>{
   homeSection.classList.add('hide')
@@ -51,6 +52,10 @@ function updateInfo(){
     shortcutCreate(shortcut.label,shortcut.image)
   })
   
+  titletxt=localStorage.getItem('browserName')||'brogser'
+  title.innerHTML=titletxt
+  titleIn.value=titletxt
+  
   cityName=localStorage.getItem('city')||'mumbai'
   weatherin.value=cityName
   
@@ -64,8 +69,7 @@ function updateInfo(){
   searchLink=searchPreferences[0] || 'https://www.google.com/search'
   searchForm.setAttribute('action',searchLink)
   searchEngineInput.value=searchPreferences[1]
-  
-  
+    id('search-inp').setAttribute('placeholder','search '+searchPreferences[1]+'...')
   
 }
 shortcuts=[]
@@ -173,6 +177,9 @@ showh=()=>{
     document.querySelector('#clearbtn').classList.remove('noshow')
   }
 }
+id('clearbtn').addEventListener('click',()=>{
+  clearinp()
+})
 searchbar.oninput=()=>{if(searchbar.value!=''){showh()}}
 
 function clearinp(){
@@ -196,6 +203,7 @@ searchEngineInput.addEventListener('change',(e)=>{
     searchLink='https://www.ecosia.org/search'
   }
   searchForm.setAttribute('action',searchLink)
+  id('search-inp').setAttribute('placeholder','search '+e.target.value+'...')
   localStorage.setItem('searchEngine',JSON.stringify([searchLink,e.target.value]))
 })
 
@@ -206,4 +214,9 @@ function clearLocal(){
 
 id('restore-btn').addEventListener('click',()=>{
   clearLocal()
+})
+//title change
+titleIn.addEventListener('change',()=>{
+  title.innerHTML=titleIn.value
+  localStorage.setItem('browserName',titleIn.value)
 })
