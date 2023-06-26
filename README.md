@@ -8,13 +8,13 @@ a fun browser homepage ui
 
 - customizable background
 
--weather widget
+- weather widget
 
--customizable title
+- customizable title
 
--responsive for all screens
+- responsive for all screens
 
--redefined shortcuts bar
+- redefined shortcuts bar
 
 -customizable font(comming soon)
 
