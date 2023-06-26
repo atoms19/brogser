@@ -1,4 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@450&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+*{
+  font-family:'Open Sans',sans-serif !important;
+}
+
 body{
   margin:0;
   padding:0;
@@ -33,11 +38,13 @@ h1,h2,h3,h4,h5,a{
 h1.title{
   color:rgb(255,255,255,8);
   font-size:2.7rem;
-  font-family:sans-serif;
   padding:1rem 0;
   font-weight:400;
-  text-shadow:0 0 3px rgb(0,0,0,0.2);
+  font-family: 'Ysabeau Infant', sans-serif;
+
+  text-align:center;
 }
+
 .searchbar{
   background:rgb(0,0,0,0.38);
   border:none;
@@ -52,6 +59,9 @@ h1.title{
   margin:1.5rem;
   text-align: center;
   
+}
+.searchbar:not(.inp):hover{
+  box-shadow:0 0 5px rgba(0,0,0,0.6);
 }
 
 .input{
@@ -88,7 +98,9 @@ align-items:center;
   pointer-events:none;
   opacity:0;
 }
-
+.icon:not(.noshow){
+  pointer-events:auto;
+}
 
 
 
@@ -341,3 +353,40 @@ a{
   
  
 }
+
+  .toggle{
+    width:55px;
+    height:20px;
+     -webkit-appearance:none;
+     background-color:rgba(255,255,255,0.6);
+     border-radius:2px;
+     outline:none;
+     transition:0.1s;
+     position:relative ;
+     transform:scale(0.78);
+}
+input:checked.toggle{
+    background-color:var(--blue);
+}
+
+.toggle:before{
+    content:'';
+    width:15px;
+    height:20px;
+    border-radius:5%;
+    position:absolute ;
+    top:0;
+    left:0;
+    background:rgba(255,255,255,0.9);
+    transform:scale(1);
+    transition:0.1s;
+    
+    
+}
+input:checked.toggle:before{
+    left:30px;
+    
+}
+input:checked.toggle{ 
+     background-color:rgba(0,0,0,0.6); 
+ }
