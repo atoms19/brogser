@@ -1,20 +1,18 @@
 # brogser
 
-a fun browser homepage ui
+a fun customizable browser homepage ui
 
 - modern glassmorphic look
 
 - switch btw 5 trusted searchengines with ease
 
-- customizable background
+- customizable elements with external stylesheet
 
-- weather widget
-
-- customizable title
+- active weather widget
 
 - responsive for all screens
 
 - redefined shortcuts bar
 
--customizable font(comming soon)
+- supports multiple fonts
 
