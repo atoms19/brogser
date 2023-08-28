@@ -54,7 +54,6 @@ configMenuBtnClose=id('menu-close-btn')
 configMenu=id('config-menu')
 bgin=id('bg-input')
 weatherin=id('weather-input')
-searchForm=id('search-form')
 searchEngineInput=id('search-engine-in')
 weatherLink=id('weather-link')
 title=id('title')
@@ -106,7 +105,6 @@ function updateInfo(){
   bgalign()
   searchPreferences=JSON.parse(localStorage.getItem('searchEngine'))||[null]
   searchLink=searchPreferences[0] || 'https://www.google.com/search'
-  searchForm.setAttribute('action',searchLink)
   searchEngineInput.value=searchPreferences[1]
     id('search-inp').setAttribute('placeholder','search '+searchPreferences[1]+'...')
   
@@ -135,8 +133,7 @@ function bgalign(){
 
 weatherLink.onclick=()=>{
   id('search-inp').value='weather'
-  searchForm.submit()
-  id('search-inp').value=''
+  search()
 }
 
 
@@ -171,9 +168,41 @@ localStorage.setItem('shortcuts',JSON.stringify(shortcuts))
 
 
 }
+id('search-inp').addEventListener('keypress',(e)=>{
+  if(e.key=='Enter'){
+  search()
+  }
+})
 
-function search(s){
-  s.submit()
+//search commands & search----------
+searchCommands={'!g':'https://github.com/search',
+'!yt':'https://m.youtube.com/results',
+'!pin':'https://pinterest.com/search/pins/',
+'!r':'https://www.reddit.com/search',
+'!tw':'https://www.twitter.com/search'
+}
+
+function search(){
+  val=id('search-inp').value
+  
+if(val.startsWith('!')){
+  searchCommandLinks=Object.values(searchCommands)
+  
+  
+Object.keys(searchCommands).forEach((key,i)=>{
+  
+  if(val.startsWith(key)){
+    if(val.slice(key.length).startsWith('/')){
+      window.open(searchCommandLinks[i].replace('search','')+val.slice(key.length),'_self')
+    }else{
+ window.open(searchCommandLinks[i]+'?q='+val.slice(key.length),'_self')
+    }
+  }
+})
+}else{
+
+window.open(searchLink+'?q='+id('search-inp').value,'_self')
+}
 }
 
 configMenuBtn.addEventListener('click',()=>{
@@ -243,7 +272,7 @@ searchEngineInput.addEventListener('change',(e)=>{
   }else if(e.target.value=='ecosia'){
     searchLink='https://www.ecosia.org/search'
   }
-  searchForm.setAttribute('action',searchLink)
+  
   id('search-inp').setAttribute('placeholder','search '+e.target.value+'...')
   localStorage.setItem('searchEngine',JSON.stringify([searchLink,e.target.value]))
 })
