@@ -1,7 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+:root{
+  --font:'Noto Sans', sans-serif;
+  --round:0.5rem;
+  --bgmode:cover;
+  
+  --searchbarround:var(--round);
+  --searchbarbg:rgb(0,0,0,0.38);
+  --searchbarborder:none;
+  --searchbartext:white;
+  --searchbarprompttext:#ccc;
+  
+  --shortcutbg:rgb(0,0,0,0.26);
+  --shortcutround:var(--round);
+  --shortcutsize:0.4rem 1rem;
+  --shortcuttext:#ccc;
+  --shortcutseperation:0.1rem 0.21rem;
+  --shortcuthovereffect:scale(0.94);
+  --shortcuttransform:'';
+  
+  
+  --shortcutboxbg:rgb(0,0,0,0.19);
+  --shortcutboxround:var(--round);
+  --shortcutboxsize:0.5rem 1.5rem;
+  --shortcutboxtransform:'';
+
+  
+  --iconbg:white;
+  --iconround:50%;
+ 
+}
 
 *{
-  font-family:'Open Sans',sans-serif !important;
+  font-family:var(--font) !important;
 }
 
 body{
@@ -10,7 +41,7 @@ body{
   background:#222;
   font-family:sans-serif;
   user-select:none;
-  font-family:'Open Sans',sans-serif;
+  font-family:'Noto Sans', sans-serif;
   color:#fff;
   scroll-behavior:smooth;
   box-sizing:border-box;
@@ -24,7 +55,7 @@ h1,h2,h3,h4,h5,a{
 .main {
     font-size:0.8rem;
     background:url('https://images.unsplash.com/photo-1681823853101-9a0d7e8be47b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80') ;
-    background-size:cover;
+    background-size:var(--bgmode);
     height:100vh;
    background-repeat:no-repeat;
     transition: all 0.2s ease-out;
@@ -40,22 +71,21 @@ h1.title{
   font-size:2.7rem;
   padding:1rem 0;
   font-weight:400;
-  font-family: 'Ysabeau Infant', sans-serif;
 
   text-align:center;
 }
 
 .searchbar{
-  background:rgb(0,0,0,0.38);
-  border:none;
+  background:var(--searchbarbg);
+  border:var(--searchbarborder);
   outline:none;
   backdrop-filter:blur(20px);
   padding: 0.68rem;
   width:80%;
   max-width:600px;
   font-size:1rem;
-  color:white;
-  border-radius:0.5rem;
+  color:var(--searchbartext);
+  border-radius:var(--searchbarround);
   margin:1.5rem;
   text-align: center;
   
@@ -64,16 +94,17 @@ h1.title{
   box-shadow:0 0 5px rgba(0,0,0,0.6);
 }
 
+
 .input{
-  background:rgb(0,0,0,0.38);
-  border:none;
+  background:var(--searchbarbg);
+  border:var(--searchbarborder);
   outline:none;
   backdrop-filter:blur(20px);
   padding: 0.68rem;
   width:80%;
   max-width:600px;
-  color:white;
-  border-radius:0.5rem;
+  color:var(--searchbartext);
+  border-radius:var(--searchbarround);
   margin:1.5rem;
   text-align: center;
   display:flex;
@@ -88,10 +119,9 @@ align-items:center;
   background: transparent ;
   border:none;
   outline:none;
-  color:white;
+  color:var(--searchbartext);
   text-align:center;
   font-size:1rem;
-  color:white;
   width:90%;
 }
 .icon.noshow{
@@ -111,12 +141,13 @@ form{
   justify-content: center;
 }
 input[type=text]::placeholder{
-  color:#ccc;
+  color:var(--searchbarprompttext);
 }
 .shortcuts{
-  background:rgb(0,0,0,0.19);
-  border-radius:0.5rem;
-  padding:0.5rem 1.5rem;
+  background:var(--shortcutboxbg);
+  border-radius:var(--shortcutboxround);
+  padding:var(--shortcutboxsize);
+  transform:var(--shortcutboxtransform);
   width:70%;
   backdrop-filter:blur(1px);
   overflow-x:hidden;
@@ -138,29 +169,30 @@ input[type=text]::placeholder{
   display:flex;
   flex-direction:column;
   justify-content:space-evenly;
-  background:rgb(0,0,0,0.26);
+  background:var(--shortcutbg);
  /* backdrop-filter:blur(2px);*/
-  border-radius:0.5rem;
-  padding:0.4rem 1rem;
+  border-radius:var(--shortcutround);
+  padding:var(--shortcutsize);
   color:white;
   height:4.25rem;
   align-items:center;
   font-size:1rem;
-  margin:0.1rem 0.21rem;
+  transform:var(--shortcuttransform);
+  margin:var(--shortcutseperation);
   text-decoration:none !important;
 -webkit-tap-highlight-color:rgba(0,0,0,0.5);
 transition: transform 0.2s cubic-bezier(0.77, 0, 0.175, 1);
 }
 .shortcut-container:hover{
-  transform:scale(0.94);
+  transform:var(--shortcuthovereffect);
 }
 icon{
-  background:white;
+  background:var(--iconbg);
   color:#222;
   display:block;
   /*padding:0.45rem 0.73rem;*/
   padding:0.5rem;
-  border-radius:50%;
+  border-radius:var(--iconround);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -178,7 +210,7 @@ icon{
 label{
   font-size:0.7rem;
   font-weight:300;
-  color:#ccc;
+  color:var(--shortcuttext);
   }
 .hide{
   display: none !important;
@@ -201,7 +233,7 @@ label{
   background:rgb(0,0,0,0.23);
   padding:0.5rem;
   color:white;
-  border-radius: 0.5rem;
+  border-radius:var(--round);
   width:80%;
   text-align:center;
   max-width:500px;
@@ -335,7 +367,7 @@ a{
   background:rgba(0,0,0,0.38);
   color:#ccc;
   text-align:center;
-  border-radius:0.5rem;
+  border-radius:var(--round);
   backdrop-filter: blur(10px);
   border:none;
   cursor:pointer;
