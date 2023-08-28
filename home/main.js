@@ -1,6 +1,43 @@
 weatherApiKey='4fbd7e056ad5fba4b7cdcd73ff8a1c12'
 
+console.log(`a brief overview of console functions to customise further
 
+-removeShortcut('shortcutname')
+-reorderShortcut('shortcutname',position)
+-customStyle('body{
+--variablename:vale;
+}')
+.         variables that can be changed
+
+--font(use @import to import font)
+  --round
+  --bgmode
+  
+  --searchbarround
+  --searchbarbg
+  --searchbarborder
+  --searchbartext
+  --searchbarprompttext
+  
+  
+  --shortcutbg
+  --shortcutround
+  --shortcutsize
+  --shortcuttext
+  --shortcutseperation
+  --shortcuthovereffect
+  --shortcuttransform
+  
+  
+  --shortcutboxbg
+  --shortcutboxround
+  --shortcutboxsize
+  --shortcutboxtransform
+
+  
+  --iconbg
+  --iconround
+`)
 
 
 function id(u){
@@ -52,6 +89,8 @@ function updateInfo(){
     shortcutCreate(shortcut.label,shortcut.image)
   })
   
+  id('customStyle').innerHTML=localStorage.getItem('externalCSS')||''
+  
   titletxt=localStorage.getItem('browserName')||'brogser'
   title.innerHTML=titletxt
   titleIn.value=titletxt
@@ -89,6 +128,7 @@ function updateWeather(){
 
 function bgalign(){
   mainSection.style.backgroundSize='cover'
+  mainSection.style.backgroundPosition='center'
   mainSection.style.backgroundRepeat='no-repeat'
  
 }
@@ -118,6 +158,7 @@ function shortcutCreate(name,img){
   shortcutNode.querySelector('label').innerText=name
   
   shortcutDisplay=id('shortcut-list')
+  
   shortcutDisplay.insertBefore(shortcutNode,shortcutDisplay.querySelector('#shortcut-add-btn'))
   id('popup-exit-btn').click()
   
@@ -213,10 +254,41 @@ function clearLocal(){
 }
 
 id('restore-btn').addEventListener('click',()=>{
+  opt=prompt('doing so will clear all data including your shortcuts type 1 to confirm')
+  if(opt==1){
   clearLocal()
+  }
 })
 //title change
 titleIn.addEventListener('change',()=>{
   title.innerHTML=titleIn.value
   localStorage.setItem('browserName',titleIn.value)
 })
+
+function removeShortcut(shortcutname){
+  shortcutS=shortcutSaves.filter((shortcut)=>{
+    if(shortcut.label!==shortcutname){
+      return shortcut
+    }
+  })
+  localStorage.setItem('shortcuts',JSON.stringify(shortcutS))
+}
+function reorderShortcut(shortcutname,newposition){
+ shortcutSaves.forEach((sh,i)=>{
+   if(sh.label==shortcutname){
+     shortcutSaves.splice(newposition-1, 0, shortcutSaves.splice(i, 1)[0])
+   }
+   localStorage.setItem('shortcuts',JSON.stringify(shortcutSaves))
+   
+ })
+  
+
+}
+
+
+externalCSS=''
+function customStyle(sstr){
+  externalCSS=sstr
+  id('customStyle').innerHTML=externalCSS
+  localStorage.setItem('externalCSS',externalCSS)
+}
