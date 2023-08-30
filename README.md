@@ -2,7 +2,8 @@
 
 a fully customisable,redesigned new tab for chrome and other browsers
 
-##installation
+## installation
+<hr>
 download this code as zip ,extract files and load it in chrome by going to  chome:extensions and clicking on load unpacked select unzipped folder and activate extension (you need to enable developer options for this)
 
 or in other browsers set hompage link as
