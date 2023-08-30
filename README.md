@@ -101,3 +101,19 @@ shortcuts can be added to shorcutbox by clicking on the obvious add button but t
 | --------------- | ----- |
 | `removeShortcut('shortcutname')` | removes the shortcut from list |
 | `reorderShortcut('shortcutname',new position)` | reorder the shortcut of the given name to the position mentioned 1 is foremost|
+
+>i couldn't make proper drag and drop and delete option cause idk allright maybe someday
+
+## beta
+custom shortcut commands is the latest addition to commands is the ability to add a new custom command ,its mandatory that it starts with`!` and the linkname should include /search like `https://www.twitter.com/search`
+
+run this on commands textarea,
+example
+```js
+
+addCustomCommand('!anim','https://anilist.co/search')
+
+```
+this is not yet fully figureed out more work will be needed
+
+# thanks
