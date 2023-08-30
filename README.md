@@ -48,9 +48,11 @@ higher order customisation requires the use commands with commands you'll be abl
 commands aren't difficult to get used to
 theres a small text feild in the config menu thats where you'll be running your commands, commands are nothing but some javascript functions
 
-here's a list of commands
+here's a list of customisation commands
 | command styntax |action |
 | --------------- | ----- |
-|`js customStyle(string)` | takes in css as string allows you to set external css |
+|`customStyle(string)` | takes in css as string allows you to set external css |
+| `addCustomStyle(string)`| takes in css and adds it yo the external css |
+
 
 
