@@ -51,6 +51,6 @@ theres a small text feild in the config menu thats where you'll be running your 
 here's a list of commands
 | command styntax |action |
 | --------------- | ----- |
-|js`customStyle(string)` | takes in css as string allows you to set external css |
+|`js customStyle(string)` | takes in css as string allows you to set external css |
 
 
