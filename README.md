@@ -22,4 +22,14 @@ just type
 !yt <what you want to search for>
 ```
 on brogser searchbar and you'd instantly be redirected to yt search results
+not just YouTube there's many more shortcuts inbuilt
+
+| shortcut | action |
+| -------- | ------ |
+|`!r <search term>` | searches reddit |
+|`!pin <search term>` | searches pinterest|
+| `!g <search term>` | searches github |
+| `!tw <search term>` | searches X(Twitter) |
+
+
 
