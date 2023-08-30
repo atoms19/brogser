@@ -55,5 +55,11 @@ here's a list of customisation commands
 |`customStyle(string)` | takes in css as string allows you to set external css |
 | `addCustomStyle(string)`| takes in css and adds it yo the external css |
 
+### shortcuts
 
+shortcuts can be added to shorcutbox by clicking on the obvious add button but they can neither be removed nor rearranged without the help of commands so go back to the textarea in config and these easy commands to reorder or remove shortcuts
 
+| command styntax |action |
+| --------------- | ----- |
+| `removeShortcut('shortcutname')` | removes the shortcut from list |
+| `reorderShortcut('shortcutname',new position)` | reorder the shortcut of the given name to the position mentioned 1 is foremost|
