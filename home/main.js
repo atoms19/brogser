@@ -329,19 +329,19 @@ titleIn.addEventListener('change',()=>{
 
 //custom commands management
 id('console').addEventListener('change',(e)=>{
-  eval(e.target.value)
+  setTimeOut(e.target.value,1000)
   e.target.value=''
 })
 
 
 
 function removeShortcut(shortcutname){
-  shortcutS=shortcutSaves.filter((shortcut)=>{
+  shortcutse=shortcutSaves.filter((shortcut)=>{
     if(shortcut.label!==shortcutname){
       return shortcut
     }
   })
-  localStorage.setItem('shortcuts',JSON.stringify(shortcutS))
+  localStorage.setItem('shortcuts',JSON.stringify(shortcutse))
 }
 function reorderShortcut(shortcutname,newposition){
  shortcutSaves.forEach((sh,i)=>{
@@ -366,7 +366,7 @@ function addCustomStyle(sstr){
 
 function addCustomCommand(key,link){
   searchCommands[key]=link
-  localStorage.setItem(commands,JSPN.stringify(searchCommands))
+  localStorage.setItem(commands,JSON.stringify(searchCommands))
 }
 
 function help(){
