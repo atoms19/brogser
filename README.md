@@ -45,6 +45,44 @@ brogser uses glasmorphic rounded ui design so it blends with the background imag
 right in the config menu you'll be able to configure your preferred search engine and can choose what the title text of the brogser should be `by default its set to brogser` you can also change the background image of brogser from config screen you can select any photo from your files
 
 higher order customisation requires the use commands with commands you'll be able to customise fonts, background color, icon size ,icon colour ,border radius etc etc
+css variables are there for ease of customisation so just change theses variables
+```css
+
+--font(use @import to import font)
+  --round
+  --bgmode
+  
+  --searchbarround
+  --searchbarbg
+  --searchbarborder
+  --searchbartext
+  --searchbarprompttext
+  
+  
+  --shortcutbg
+  --shortcutround
+  --shortcutsize
+  --shortcuttext
+  --shortcutseperation
+  --shortcuthovereffect
+  --shortcuttransform
+  
+  
+  --shortcutboxbg
+  --shortcutboxround
+  --shortcutboxsize
+  --shortcutboxtransform
+
+  
+  --iconbg
+  --iconround
+  --iconsize
+  
+  --btnbg
+  --btntext
+
+```
+
 
 commands aren't difficult to get used to
 theres a small text feild in the config menu thats where you'll be running your commands, commands are nothing but some javascript functions
