@@ -5,7 +5,7 @@
   --round:0.5rem;
   --bgmode:cover;
   
-/*  --searchbarround:var(--round);*/
+  --searchbarround:var(--round);
   --searchbarbg:rgb(0,0,0,0.38);
   --searchbarborder:none;
   --searchbartext:white;
@@ -16,7 +16,7 @@
   --titlesize:1rem 0;
   
   --shortcutbg:rgb(0,0,0,0.26);
-/* --shortcutround:var(--round);*/
+ --shortcutround:var(--round);
   --shortcutsize:0.4rem 1rem;
   --shortcuttext:#ccc;
   --shortcutseperation:0.1rem 0.21rem;
@@ -25,7 +25,7 @@
   
   
   --shortcutboxbg:rgb(0,0,0,0.19);
-/* --shortcutboxround:var(--round);*/
+  --shortcutboxround:var(--round);
   --shortcutboxsize:0.5rem 1.5rem;
   --shortcutboxtransform:'';
 
