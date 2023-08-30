@@ -1,9 +1,9 @@
         
          {
-                "name": "JSON brogser new tab",
+                "name": "brogser new tab",
                 "short_name": "brogser",
-                "version": "1",
-                "version_name": "Version 1",
+                "version": "2",
+                "version_name": "Version 2",
                 "manifest_version": 3,
                 "description": "a redesigned new tab featuring customizable shortcuts,search engine switcher, weather widget and a glassy background"
                 ,
