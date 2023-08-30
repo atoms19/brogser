@@ -329,7 +329,7 @@ titleIn.addEventListener('change',()=>{
 
 //custom commands management
 id('console').addEventListener('change',(e)=>{
-  setTimeOut(e.target.value,1000)
+  eval(e.target.value)
   e.target.value=''
 })
 
@@ -366,7 +366,7 @@ function addCustomStyle(sstr){
 
 function addCustomCommand(key,link){
   searchCommands[key]=link
-  localStorage.setItem(commands,JSON.stringify(searchCommands))
+  localStorage.setItem('commands',JSON.stringify(searchCommands))
 }
 
 function help(){
