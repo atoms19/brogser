@@ -1,4 +1,4 @@
-<div style='width:100%;text-align:center;># brogser</div>
+# brogser
 
 a fully customisable,redesigned new tab for chrome and other browsers
 
