@@ -1,5 +1,8 @@
-weatherApiKey='4fbd7e056ad5fba4b7cdcd73ff8a1c12'
 
+
+weatherApiKey='4fbd7e056ad5fba4b7cdcd73ff8a1c12'
+windowMode='_self'
+//console help
 console.log(`a brief overview of console functions to customise further
 
 -removeShortcut('shortcutname')
@@ -37,9 +40,15 @@ console.log(`a brief overview of console functions to customise further
   
   --iconbg
   --iconround
+  
+  addCustomStyle() ->adds
+  
+  addCustomCommand(key ,link)-> searchbar shortcuts
 `)
 
 
+
+//basics and getting elements 
 function id(u){
   return document.getElementById(u)
 }
@@ -59,6 +68,7 @@ weatherLink=id('weather-link')
 title=id('title')
 titleIn=id('title-in')
 
+//add shortcut function
 id('shortcut-add-btn').addEventListener('click',()=>{
   homeSection.classList.add('hide')
   popupSection.classList.remove('hide')
@@ -78,38 +88,52 @@ id('shortcut-create').addEventListener('click',()=>{
 })
 
 
-
+//preloading
 window.onload=updateInfo
 
-
 function updateInfo(){
+  
+  //shortcuts spawning 
  shortcutSaves= JSON.parse(localStorage.getItem('shortcuts')) || []
   shortcutSaves.forEach((shortcut)=>{
     shortcutCreate(shortcut.label,shortcut.image)
   })
   
+  //adding external css
   id('customStyle').innerHTML=localStorage.getItem('externalCSS')||''
   
+  //weather & background 
+  
+  cityName=localStorage.getItem('city')||'mumbai'
+  weatherin.value=cityName
+  updateWeather()
+  
+  url=localStorage.getItem('bgimg')||`https://images.unsplash.com/photo-1681823853101-9a0d7e8be47b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80`
+  mainSection.style.background=`url('${url}')`
+  bgalign()
+  
+  //browser preferences
   titletxt=localStorage.getItem('browserName')||'brogser'
   title.innerHTML=titletxt
   titleIn.value=titletxt
   
-  cityName=localStorage.getItem('city')||'mumbai'
-  weatherin.value=cityName
-  
-  updateWeather()
-  
-  url=localStorage.getItem('bgimg')||`https://images.unsplash.com/photo-1681823853101-9a0d7e8be47b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80`
-  
-  mainSection.style.background=`url('${url}')`
-  bgalign()
   searchPreferences=JSON.parse(localStorage.getItem('searchEngine'))||[null]
+  
   searchLink=searchPreferences[0] || 'https://www.google.com/search'
+  
   searchEngineInput.value=searchPreferences[1]
     id('search-inp').setAttribute('placeholder','search '+searchPreferences[1]+'...')
+    
+  //quicksearch
+  searchCommands=JSON.parse(localStorage.getItem('commands'))||{'!g':'https://github.com/search',
+'!yt':'https://m.youtube.com/results',
+'!pin':'https://pinterest.com/search/pins/',
+'!r':'https://www.reddit.com/search',
+'!tw':'https://www.twitter.com/search',
+}
   
 }
-shortcuts=[]
+
 
 function updateWeather(){
   apiLink=`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${weatherApiKey}`
@@ -140,6 +164,8 @@ weatherLink.onclick=()=>{
 
 //http://logo.clearbit.com/discord.com
 
+//shortcut creation
+shortcuts=[]
 function shortcutCreate(name,img){
   
   shortcutNode=id('shortcut-template').content.cloneNode(true)
@@ -150,7 +176,6 @@ function shortcutCreate(name,img){
  shortcutNode.querySelector('a').setAttribute('href','https://'+img)
   shortcutImg=shortcutNode.querySelector('img')
   shortcutImg.setAttribute('src','http://logo.clearbit.com/'+img)
-  
   
   shortcutNode.querySelector('label').innerText=name
   
@@ -163,24 +188,20 @@ function shortcutCreate(name,img){
   label:name
   ,image:img
 })
-
 localStorage.setItem('shortcuts',JSON.stringify(shortcuts))
-
-
 }
+
+
+//search commands & search----------
+
+
 id('search-inp').addEventListener('keypress',(e)=>{
   if(e.key=='Enter'){
   search()
   }
 })
 
-//search commands & search----------
-searchCommands={'!g':'https://github.com/search',
-'!yt':'https://m.youtube.com/results',
-'!pin':'https://pinterest.com/search/pins/',
-'!r':'https://www.reddit.com/search',
-'!tw':'https://www.twitter.com/search'
-}
+
 
 function search(){
   val=id('search-inp').value
@@ -193,9 +214,9 @@ Object.keys(searchCommands).forEach((key,i)=>{
   
   if(val.startsWith(key)){
     if(val.slice(key.length).startsWith('/')){
-      window.open(searchCommandLinks[i].replace('search','')+val.slice(key.length),'_self')
+      window.open(searchCommandLinks[i].replace('search','')+val.slice(key.length),windowMode)
     }else{
- window.open(searchCommandLinks[i]+'?q='+val.slice(key.length),'_self')
+ window.open(searchCommandLinks[i]+'?q='+val.slice(key.length),windowMode)
     }
   }
 })
@@ -205,6 +226,8 @@ window.open(searchLink+'?q='+id('search-inp').value,'_self')
 }
 }
 
+
+//comfigure menu-----
 configMenuBtn.addEventListener('click',()=>{
  
     configMenu.classList.remove('hide')
@@ -232,7 +255,7 @@ bgin.addEventListener('change',()=>{
   console.log(url)
 })
 
-//weather changer
+//weather location changer
 weatherin.addEventListener('change',()=>{
   cityName=weatherin.value
   localStorage.setItem('city',cityName)
@@ -277,11 +300,11 @@ searchEngineInput.addEventListener('change',(e)=>{
   localStorage.setItem('searchEngine',JSON.stringify([searchLink,e.target.value]))
 })
 
+//restore
 function clearLocal(){
   localStorage.clear()
   updateInfo()
 }
-
 id('restore-btn').addEventListener('click',()=>{
   opt=prompt('doing so will clear all data including your shortcuts type 1 to confirm')
   if(opt==1){
@@ -293,6 +316,24 @@ titleIn.addEventListener('change',()=>{
   title.innerHTML=titleIn.value
   localStorage.setItem('browserName',titleIn.value)
 })
+
+//new window mode
+/*id('new-window-toggle').addEventListener('change',(e)=>{
+ if(e.target.checked){
+   windowMode='_blank'
+   console.log('changed')
+ }else{
+   windowMode='_self'
+ }
+})*/
+
+//custom commands management
+id('console').addEventListener('change',(e)=>{
+  eval(e.target.value)
+  e.target.value=''
+})
+
+
 
 function removeShortcut(shortcutname){
   shortcutS=shortcutSaves.filter((shortcut)=>{
@@ -308,16 +349,27 @@ function reorderShortcut(shortcutname,newposition){
      shortcutSaves.splice(newposition-1, 0, shortcutSaves.splice(i, 1)[0])
    }
    localStorage.setItem('shortcuts',JSON.stringify(shortcutSaves))
-   
  })
-  
-
+ 
 }
-
 
 externalCSS=''
 function customStyle(sstr){
   externalCSS=sstr
   id('customStyle').innerHTML=externalCSS
   localStorage.setItem('externalCSS',externalCSS)
+}
+function addCustomStyle(sstr){
+  externalCSS+=sstr
+  localStorage.setItem('externalCSS',externalCSS)
+}
+
+function addCustomCommand(key,link){
+  searchCommands[key]=link
+  localStorage.setItem(commands,JSPN.stringify(searchCommands))
+}
+
+function help(){
+  
+  window.open('https://github.com/atoms19/brogser/blob/main/README.md','_self')
 }
