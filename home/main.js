@@ -40,6 +40,10 @@ console.log(`a brief overview of console functions to customise further
   
   --iconbg
   --iconround
+  --iconsize
+  
+  --btnbg
+  --btntext
   
   addCustomStyle() ->adds
   
@@ -67,7 +71,8 @@ searchEngineInput=id('search-engine-in')
 weatherLink=id('weather-link')
 title=id('title')
 titleIn=id('title-in')
-
+newsLocationInput=id('country-codes-in')
+newsCategoryInput=id('category-in')
 //add shortcut function
 id('shortcut-add-btn').addEventListener('click',()=>{
   homeSection.classList.add('hide')
@@ -90,8 +95,18 @@ id('shortcut-create').addEventListener('click',()=>{
 
 //preloading
 window.onload=updateInfo
+function timeUpdate(){
+  
+  
+  console.log(100)
+
+}
+
 
 function updateInfo(){
+  //newscountry input update
+  newsLocationInput.value=localStorage.newsCountry||'in'
+  newsCategoryInput.value=localStorage.newsCategory||''
   
   //shortcuts spawning 
  shortcutSaves= JSON.parse(localStorage.getItem('shortcuts')) || []
@@ -100,7 +115,8 @@ function updateInfo(){
   })
   
   //adding external css
-  id('customStyle').innerHTML=localStorage.getItem('externalCSS')||''
+  externalCSS=localStorage.getItem('externalCSS')||''
+  id('customStyle').innerHTML=externalCSS
   
   //weather & background 
   
@@ -114,22 +130,40 @@ function updateInfo(){
   
   //browser preferences
   titletxt=localStorage.getItem('browserName')||'brogser'
+  if(titletxt!='za warudo'){
   title.innerHTML=titletxt
   titleIn.value=titletxt
+  }else{
+  currentDate = new Date();
+  options = { hour: 'numeric', minute: '2-digit', hour12: true };
+  twelveHourTime = currentDate.toLocaleTimeString('en-US', options);
   
+  
+  title.innerHTML=twelveHourTime
+  setInterval(()=>{
+    currentDate = new Date();
+  options = { hour: 'numeric', minute: '2-digit', hour12: true };
+  twelveHourTime = currentDate.toLocaleTimeString('en-US', options);
+  
+  
+  title.innerHTML=twelveHourTime
+    }, 1000);
+  titleIn.value=titletxt
+  }
   searchPreferences=JSON.parse(localStorage.getItem('searchEngine'))||[null]
   
   searchLink=searchPreferences[0] || 'https://www.google.com/search'
+  searchPreferenceName=searchPreferences[1]||'google'
+  searchEngineInput.value=searchPreferenceName
   
-  searchEngineInput.value=searchPreferences[1]
-    id('search-inp').setAttribute('placeholder','search '+searchPreferences[1]+'...')
+    id('search-inp').setAttribute('placeholder','search '+searchPreferenceName+'...')
     
   //quicksearch
-  searchCommands=JSON.parse(localStorage.getItem('commands'))||{'!g':'https://github.com/search',
-'!yt':'https://m.youtube.com/results',
-'!pin':'https://pinterest.com/search/pins/',
-'!r':'https://www.reddit.com/search',
-'!tw':'https://www.twitter.com/search',
+  searchCommands=JSON.parse(localStorage.getItem('commands'))||{'!g':['https://github.com/search','?q='],
+'!yt':['https://m.youtube.com/results','?q='],
+'!pin':['https://pinterest.com/search/pins/','?q='],
+'!r':['https://www.reddit.com/search','?q=','r/'],
+'!tw':['https://www.twitter.com/search','?q='],
 }
   
 }
@@ -214,9 +248,9 @@ Object.keys(searchCommands).forEach((key,i)=>{
   
   if(val.startsWith(key)){
     if(val.slice(key.length).startsWith('/')){
-      window.open(searchCommandLinks[i].replace('search','')+val.slice(key.length),windowMode)
+      window.open(searchCommandLinks[i][0].replace('search',searchCommandLinks[i][2]||'')+val.slice(key.length),windowMode)
     }else{
- window.open(searchCommandLinks[i]+'?q='+val.slice(key.length),windowMode)
+ window.open(searchCommandLinks[i][0]+searchCommandLinks[i][1]+val.slice(key.length),windowMode)
     }
   }
 })
@@ -281,6 +315,14 @@ searchbar.value=''
 showh()
 } 
 
+newsLocationInput.addEventListener('change',()=>{
+  localStorage.setItem('newsCountry',newsLocationInput.value)
+})
+
+newsCategoryInput.addEventListener('change',()=>{
+localStorage.setItem('newsCategory',newsCategoryInput.value)
+})
+
 //search engine changer
 searchEngineInput.addEventListener('change',(e)=>{
   console.log(e.target.value)
@@ -329,19 +371,23 @@ titleIn.addEventListener('change',()=>{
 
 //custom commands management
 id('console').addEventListener('change',(e)=>{
+try{
   eval(e.target.value)
   e.target.value=''
+}catch{
+  e.target.value='this feature is incompatible in your browser please inspect this webpage and type the commands on the console (type help() to see all commands there)'
+}
 })
 
 
 
 function removeShortcut(shortcutname){
-  shortcutse=shortcutSaves.filter((shortcut)=>{
+  shortcutS=shortcutSaves.filter((shortcut)=>{
     if(shortcut.label!==shortcutname){
       return shortcut
     }
   })
-  localStorage.setItem('shortcuts',JSON.stringify(shortcutse))
+  localStorage.setItem('shortcuts',JSON.stringify(shortcutS))
 }
 function reorderShortcut(shortcutname,newposition){
  shortcutSaves.forEach((sh,i)=>{
@@ -353,23 +399,25 @@ function reorderShortcut(shortcutname,newposition){
  
 }
 
-externalCSS=''
+
 function customStyle(sstr){
   externalCSS=sstr
   id('customStyle').innerHTML=externalCSS
   localStorage.setItem('externalCSS',externalCSS)
 }
 function addCustomStyle(sstr){
-  externalCSS+=sstr
-  localStorage.setItem('externalCSS',externalCSS)
+ 
+  localStorage.setItem('externalCSS',externalCSS+sstr)
 }
 
 function addCustomCommand(key,link){
   searchCommands[key]=link
-  localStorage.setItem('commands',JSON.stringify(searchCommands))
+  localStorage.setItem(searchCommands,JSON.stringify(searchCommands))
 }
 
 function help(){
   
   window.open('https://github.com/atoms19/brogser/blob/main/README.md','_self')
 }
+
+//0a85f86406434f209f174bf1cfc9353f newsfeed api
