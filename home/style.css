@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 
 :root{
-  --font:'Noto Sans', sans-serif;
+  --font:'Noto Sans', sans-serif
+  --fontSize:1rem;
   --round:0.5rem;
   --bgmode:cover;
   
   --searchbarround:var(--round);
+  --otherinpround:var(--searchbarround);
   --searchbarbg:rgb(0,0,0,0.38);
   --searchbarborder:none;
   --searchbartext:white;
@@ -25,7 +27,7 @@
   
   
   --shortcutboxbg:rgb(0,0,0,0.19);
-  --shortcutboxround:var(--round);
+ --shortcutboxround:var(--round);
   --shortcutboxsize:0.5rem 1.5rem;
   --shortcutboxtransform:'';
 
@@ -54,6 +56,7 @@ body{
   box-sizing:border-box;
   font-weight:450;
   -webkit-tap-highlight-color:rgba(0,0,0,0.25);
+  font-size:var(--fontSize);
 }
 h1,h2,h3,h4,h5,a{
   font-family:'Open Sans',sans-serif;
@@ -65,12 +68,15 @@ h1,h2,h3,h4,h5,a{
     height:100vh;
    background-repeat:no-repeat;
     transition: all 0.2s ease-out;
+    background-attachment: fixed;
+    overflow-y:scroll;
 }
 .container{
   display:flex;
   flex-direction: column;
   align-items:center;
   justify-content: space-around;
+  
 }
 h1.title{
   color:var(--titletext);
@@ -82,6 +88,7 @@ h1.title{
 }
 
 .searchbar{
+   --searchbarround:var(--otherinpround);
   background:var(--searchbarbg);
   border:var(--searchbarborder);
   outline:none;
@@ -102,6 +109,7 @@ h1.title{
 
 
 .input{
+  
   background:var(--searchbarbg);
   border:var(--searchbarborder);
   outline:none;
@@ -309,7 +317,7 @@ label{
 a{
    text-decoration:none !important;
 }
-.weather{
+.weather,#newsfeedbtn{
   display:flex;
   justify-content:space-around;
   color:rgba(255,255,255);
@@ -334,6 +342,9 @@ a{
   background:rgba(0,0,0,0.25);
   height:100%;
   animation: slidedown 0.5s;
+}
+#newsfeedbtn{
+  margin-bottom:0.75rem;
 }
 .config-top-nav{
  
@@ -428,3 +439,45 @@ input:checked.toggle:before{
 input:checked.toggle{ 
      background-color:rgba(0,0,0,0.6); 
  }
+ .a-container{
+   margin-top:30vh;
+ }
+ .article-container{
+  width:80%;
+  max-width:600px;
+ }
+ .article{
+  text-decoration:none;
+  overflow:hidden;
+  color:white;
+  background:rgba(0, 0, 0, 0.5);
+  display:block;
+  border-radius:var(--round);
+  outline:none;
+  -webkit-tap-highlight-color: rgba(37, 39, 63, 0.6);
+  backdrop-filter:blur(5px);
+  margin-bottom:1rem;
+  
+  
+}
+.article-content{
+  padding:0.5rem;
+  padding-bottom:1rem;
+  
+}
+.article-img{
+  width:100%;
+}
+.article-info{
+  display:flex;
+  justify-content:space-between;
+  width:100%;
+  opacity:0.7;
+  font-size:0.9rem;
+ 
+}
+.article-heading{
+  font-size:1rem;
+  margin-top:0;
+ 
+}
