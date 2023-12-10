@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 
 :root{
-  --font:'Noto Sans', sans-serif
+  --font:'Noto Sans', sans-serif;
   --fontSize:1rem;
   --round:0.5rem;
   --bgmode:cover;
