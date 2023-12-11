@@ -421,8 +421,8 @@ function help(){
 }
 
 //0a85f86406434f209f174bf1cfc9353f newsfeed api
-
-counter = 2;
+try{
+let counter = 2;
 alert('news work')
 
 function fetchNews(page = 1) {
@@ -480,5 +480,7 @@ id('newsfeedbtn').onclick=()=>{
 }
 //fetchNews();
 
-
+}catch(err){
+alert(err)
+}
 
