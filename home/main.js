@@ -426,7 +426,7 @@ let counter = 2;
 
 
 function fetchNews(page = 1) {
-  
+  alert('fun')
   query = localStorage.newsCountry ||'in'
 category =localStorage.newsCategory ||``;
  url = `https://newsapi.org/v2/top-headlines?country=${query}&category=${category}&apikey=`;
