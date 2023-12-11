@@ -421,12 +421,12 @@ function help(){
 }
 
 //0a85f86406434f209f174bf1cfc9353f newsfeed api
-try{
+
 let counter = 2;
-alert('news work')
+
 
 function fetchNews(page = 1) {
-  try{
+  
   query = localStorage.newsCountry ||'in'
 category =localStorage.newsCategory ||``;
  url = `https://newsapi.org/v2/top-headlines?country=${query}&category=${category}&apikey=`;
@@ -464,9 +464,7 @@ const apiKey = '0a85f86406434f209f174bf1cfc9353f';
 
       document.querySelector('#article-container').appendChild(articleElem);
     });
-  }catch(err){
-    alert(err)
-  });
+});
 
   window.onscroll = function () {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
@@ -480,7 +478,4 @@ id('newsfeedbtn').onclick=()=>{
 }
 //fetchNews();
 
-}catch(err){
-alert(err)
-}
 
