@@ -426,15 +426,20 @@ let counter = 2;
 
 
 function fetchNews(page = 1) {
-  alert('fun')
+  
   query = localStorage.newsCountry ||'in'
 category =localStorage.newsCategory ||``;
  url = `https://newsapi.org/v2/top-headlines?country=${query}&category=${category}&apikey=`;
 const apiKey = '0a85f86406434f209f174bf1cfc9353f';
 
-  fetch(url + apiKey + '&page=' + page).then((r) => {
+  fetch(url + apiKey + '&page=' + page,{
+    method:'GET',
+    headers:{
+'Orgin':'https://localhost'
+    }
+  }).then((r) => {
     return r.json();
-    alert('yes')
+  
   }).then((data) => {
     articleTemplate = document.querySelector('#article-template');
     if (data.articles == undefined) {
@@ -477,7 +482,7 @@ const apiKey = '0a85f86406434f209f174bf1cfc9353f';
   };
 }
 id('newsfeedbtn').onclick=()=>{
-  alert('feature broken')
+  
   fetchNews()
 }
 //fetchNews();
