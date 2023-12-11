@@ -434,6 +434,7 @@ const apiKey = '0a85f86406434f209f174bf1cfc9353f';
 
   fetch(url + apiKey + '&page=' + page).then((r) => {
     return r.json();
+    alert('yes')
   }).then((data) => {
     articleTemplate = document.querySelector('#article-template');
     if (data.articles == undefined) {
