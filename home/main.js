@@ -474,6 +474,7 @@ const apiKey = '0a85f86406434f209f174bf1cfc9353f';
   };
 }
 id('newsfeedbtn').onclick=()=>{
+  alert('feature broken')
   fetchNews()
 }
 //fetchNews();
