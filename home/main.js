@@ -464,7 +464,9 @@ const apiKey = '0a85f86406434f209f174bf1cfc9353f';
 
       document.querySelector('#article-container').appendChild(articleElem);
     });
-});
+}).catch(err=>{
+    alert('response error'+err)}
+         
 
   window.onscroll = function () {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
