@@ -111,9 +111,9 @@ run this on commands textarea,
 example
 ```js
 
-addCustomCommand('!anim','https://anilist.co/search')
+addCustomCommand('!anim',['https://anilist.co/search','&q='])
 
 ```
-this is not yet fully figureed out more work will be needed
+
 
 # thanks
