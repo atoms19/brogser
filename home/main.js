@@ -86,7 +86,7 @@ homeSection.classList.remove('hide')
 id('shortcut-create').addEventListener('click',()=>{
   if(shortcutUrlIn.value!='' && shortcutNameIn.value!=''){
   shortcutCreate(shortcutNameIn.value,shortcutUrlIn.value)
-  
+
   shortcutUrlIn.value=''
   shortcutNameIn.value=''
   }
@@ -96,8 +96,8 @@ id('shortcut-create').addEventListener('click',()=>{
 //preloading
 window.onload=updateInfo
 function timeUpdate(){
-  
-  
+
+
   console.log(100)
 
 }
@@ -107,27 +107,27 @@ function updateInfo(){
   //newscountry input update
   newsLocationInput.value=localStorage.newsCountry||'in'
   newsCategoryInput.value=localStorage.newsCategory||''
-  
+
   //shortcuts spawning 
  shortcutSaves= JSON.parse(localStorage.getItem('shortcuts')) || []
   shortcutSaves.forEach((shortcut)=>{
     shortcutCreate(shortcut.label,shortcut.image)
   })
-  
+
   //adding external css
   externalCSS=localStorage.getItem('externalCSS')||''
   id('customStyle').innerHTML=externalCSS
-  
+
   //weather & background 
-  
+
   cityName=localStorage.getItem('city')||'mumbai'
   weatherin.value=cityName
   updateWeather()
-  
+
   url=localStorage.getItem('bgimg')||`https://images.unsplash.com/photo-1681823853101-9a0d7e8be47b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80`
   mainSection.style.background=`url('${url}')`
   bgalign()
-  
+
   //browser preferences
   titletxt=localStorage.getItem('browserName')||'brogser'
   if(titletxt!='za warudo'){
@@ -137,27 +137,27 @@ function updateInfo(){
   currentDate = new Date();
   options = { hour: 'numeric', minute: '2-digit', hour12: true };
   twelveHourTime = currentDate.toLocaleTimeString('en-US', options);
-  
-  
+
+
   title.innerHTML=twelveHourTime
   setInterval(()=>{
     currentDate = new Date();
   options = { hour: 'numeric', minute: '2-digit', hour12: true };
   twelveHourTime = currentDate.toLocaleTimeString('en-US', options);
-  
-  
+
+
   title.innerHTML=twelveHourTime
     }, 1000);
   titleIn.value=titletxt
   }
   searchPreferences=JSON.parse(localStorage.getItem('searchEngine'))||[null]
-  
+
   searchLink=searchPreferences[0] || 'https://www.google.com/search'
   searchPreferenceName=searchPreferences[1]||'google'
   searchEngineInput.value=searchPreferenceName
-  
+
     id('search-inp').setAttribute('placeholder','search '+searchPreferenceName+'...')
-    
+
   //quicksearch
   searchCommands=JSON.parse(localStorage.getItem('commands'))||{'!g':['https://github.com/search','?q='],
 '!yt':['https://m.youtube.com/results','?q='],
@@ -165,13 +165,13 @@ function updateInfo(){
 '!r':['https://www.reddit.com/search','?q=','r/'],
 '!tw':['https://www.twitter.com/search','?q='],
 }
-  
+
 }
 
 
 function updateWeather(){
   apiLink=`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${weatherApiKey}`
-  
+
   fetch(apiLink).then((response)=>{
    return response.json()
   }).then((data)=>{
@@ -186,7 +186,7 @@ function bgalign(){
   mainSection.style.backgroundSize='cover'
   mainSection.style.backgroundPosition='center'
   mainSection.style.backgroundRepeat='no-repeat'
- 
+
 }
 
 weatherLink.onclick=()=>{
@@ -201,23 +201,23 @@ weatherLink.onclick=()=>{
 //shortcut creation
 shortcuts=[]
 function shortcutCreate(name,img){
-  
+
   shortcutNode=id('shortcut-template').content.cloneNode(true)
- 
+
  if(img.includes('https://')){
    img.replace('https://','')
  }
  shortcutNode.querySelector('a').setAttribute('href','https://'+img)
   shortcutImg=shortcutNode.querySelector('img')
   shortcutImg.setAttribute('src','http://logo.clearbit.com/'+img)
-  
+
   shortcutNode.querySelector('label').innerText=name
-  
+
   shortcutDisplay=id('shortcut-list')
-  
+
   shortcutDisplay.insertBefore(shortcutNode,shortcutDisplay.querySelector('#shortcut-add-btn'))
   id('popup-exit-btn').click()
-  
+
   shortcuts.push({
   label:name
   ,image:img
@@ -239,13 +239,13 @@ id('search-inp').addEventListener('keypress',(e)=>{
 
 function search(){
   val=id('search-inp').value
-  
+
 if(val.startsWith('!')){
   searchCommandLinks=Object.values(searchCommands)
-  
-  
+
+
 Object.keys(searchCommands).forEach((key,i)=>{
-  
+
   if(val.startsWith(key)){
     if(val.slice(key.length).startsWith('/')){
       window.open(searchCommandLinks[i][0].replace('search',searchCommandLinks[i][2]||'')+val.slice(key.length),windowMode)
@@ -263,12 +263,12 @@ window.open(searchLink+'?q='+id('search-inp').value,'_self')
 
 //comfigure menu-----
 configMenuBtn.addEventListener('click',()=>{
- 
+
     configMenu.classList.remove('hide')
     homeSection.classList.add('hide')
 })
 configMenuBtnClose.addEventListener('click',()=>{
- 
+
     configMenu.classList.add('hide')
     homeSection.classList.remove('hide')
 })
@@ -278,14 +278,14 @@ bgin.addEventListener('change',()=>{
   filer=new FileReader()
   url=filer.readAsDataURL(bgin.files[0])
 
-  
+
   filer.onload=(e)=>{
   document.querySelector('.main').style.background=`url('${e.target.result}')`
   localStorage.setItem('bgimg',e.target.result)
     bgalign()
   }
-  
-  
+
+
   console.log(url)
 })
 
@@ -294,7 +294,7 @@ weatherin.addEventListener('change',()=>{
   cityName=weatherin.value
   localStorage.setItem('city',cityName)
 updateWeather()
-  
+
 })
 searchbar=document.querySelector('#search-inp')
 showh=()=>{
@@ -310,7 +310,7 @@ id('clearbtn').addEventListener('click',()=>{
 searchbar.oninput=()=>{if(searchbar.value!=''){showh()}}
 
 function clearinp(){
-  
+
 searchbar.value=''
 showh()
 } 
@@ -337,7 +337,7 @@ searchEngineInput.addEventListener('change',(e)=>{
   }else if(e.target.value=='ecosia'){
     searchLink='https://www.ecosia.org/search'
   }
-  
+
   id('search-inp').setAttribute('placeholder','search '+e.target.value+'...')
   localStorage.setItem('searchEngine',JSON.stringify([searchLink,e.target.value]))
 })
@@ -396,7 +396,7 @@ function reorderShortcut(shortcutname,newposition){
    }
    localStorage.setItem('shortcuts',JSON.stringify(shortcutSaves))
  })
- 
+
 }
 
 
@@ -406,17 +406,17 @@ function customStyle(sstr){
   localStorage.setItem('externalCSS',externalCSS)
 }
 function addCustomStyle(sstr){
- 
+
   localStorage.setItem('externalCSS',externalCSS+sstr)
 }
 
 function addCustomCommand(key,link){
   searchCommands[key]=link
-  localStorage.setItem(searchCommands,JSON.stringify(searchCommands))
+  localStorage.setItem('commands',JSON.stringify(searchCommands))
 }
 
 function help(){
-  
+
   window.open('https://github.com/atoms19/brogser/blob/main/README.md','_self')
 }
 
@@ -426,7 +426,7 @@ let counter = 2;
 
 
 function fetchNews(page = 1) {
-  
+
   query = localStorage.newsCountry ||'in'
 category =localStorage.newsCategory ||``;
  url = `https://newsapi.org/v2/top-headlines?country=${query}&category=${category}&apikey=`;
@@ -439,7 +439,7 @@ const apiKey = '0a85f86406434f209f174bf1cfc9353f';
     }
   }).then((r) => {
     return r.json();
-  
+
   }).then((data) => {
     articleTemplate = document.querySelector('#article-template');
     if (data.articles == undefined) {
@@ -472,7 +472,7 @@ const apiKey = '0a85f86406434f209f174bf1cfc9353f';
     });
 }).catch(err=>{
     alert('response error'+err)})
-         
+
 
   window.onscroll = function () {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
@@ -482,9 +482,7 @@ const apiKey = '0a85f86406434f209f174bf1cfc9353f';
   };
 }
 id('newsfeedbtn').onclick=()=>{
-  
+
   fetchNews()
 }
 //fetchNews();
-
-
